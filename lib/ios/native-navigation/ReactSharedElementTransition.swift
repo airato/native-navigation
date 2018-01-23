@@ -106,7 +106,7 @@ final public class ReactSharedElementTransition: NSObject,
     if !fromViewController.containerView().isDescendant(of: presenting.view) {
       return nil
     }
-    return makeAnimationController(isPresenting: true)
+    return makeAnimationController(true)
   }
 
   public func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
@@ -117,7 +117,7 @@ final public class ReactSharedElementTransition: NSObject,
     if !fromViewController.containerView().isDescendant(of: presentingViewController.view) {
       return nil
     }
-    return makeAnimationController(isPresenting: false)
+    return makeAnimationController(false)
   }
 
   public func navigationController(
@@ -129,14 +129,14 @@ final public class ReactSharedElementTransition: NSObject,
   {
     if operation == .push {
       if fromVC === fromViewController && toVC === toViewController {
-        return makeAnimationController(isPresenting: true)
+        return makeAnimationController(true)
       }
     } else if operation == .pop {
       if (noPoppingViewControllerAnimation()) {
         return nil
       }
       if fromVC === toViewController && toVC === fromViewController {
-        return makeAnimationController(isPresenting: false)
+        return makeAnimationController(false)
       }
     }
     return nil
@@ -155,7 +155,7 @@ final public class ReactSharedElementTransition: NSObject,
     return noPoppingTransition
   }
 
-  fileprivate func makeAnimationController(isPresenting: Bool) -> UIViewControllerAnimatedTransitioning {
+  fileprivate func makeAnimationController(_ isPresenting: Bool) -> UIViewControllerAnimatedTransitioning {
 
     let animationContentGenerator = { [weak self] animationContainer in
       return self?.generateAnimationContentFromViewControllers(animationContainer)

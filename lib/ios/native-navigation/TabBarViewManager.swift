@@ -30,16 +30,16 @@ final class TabBar: RCTView {
 
   // MARK: Private
 
-  private var implementation: ReactNavigationImplementation = ReactNavigationCoordinator.sharedInstance.navigation
+  fileprivate var implementation: ReactNavigationImplementation = ReactNavigationCoordinator.sharedInstance.navigation
   var tabBar: UITabBar?
-  private var prevConfig: [String: AnyObject] = [:]
-  private var renderedConfig: [String: AnyObject] = [:]
+  fileprivate var prevConfig: [String: AnyObject] = [:]
+  fileprivate var renderedConfig: [String: AnyObject] = [:]
   
 }
 
 private let VERSION: Int = 1
 
-@objc(TabBarViewManager)
+(TabBarViewManager)
 final class TabBarViewManager: RCTViewManager {
   override func view() -> UIView! {
     return TabBar()

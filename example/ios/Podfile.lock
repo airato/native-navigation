@@ -1,26 +1,27 @@
 PODS:
-  - native-navigation (0.1.0):
+  - native-navigation (0.2.1):
     - React
-  - React (0.42.3):
-    - React/Core (= 0.42.3)
-  - React/Core (0.42.3):
-    - React/cxxreact
-    - Yoga (= 0.42.3.React)
-  - React/cxxreact (0.42.3):
-    - React/jschelpers
-  - React/jschelpers (0.42.3)
-  - React/RCTAnimation (0.42.3):
+  - React (0.50.4):
+    - React/Core (= 0.50.4)
+  - React/Core (0.50.4):
+    - yoga (= 0.50.4.React)
+  - React/fishhook (0.50.4)
+  - React/RCTAnimation (0.50.4):
     - React/Core
-  - React/RCTImage (0.42.3):
+  - React/RCTBlob (0.50.4):
+    - React/Core
+  - React/RCTImage (0.50.4):
     - React/Core
     - React/RCTNetwork
-  - React/RCTNetwork (0.42.3):
+  - React/RCTNetwork (0.50.4):
     - React/Core
-  - React/RCTText (0.42.3):
+  - React/RCTText (0.50.4):
     - React/Core
-  - React/RCTWebSocket (0.42.3):
+  - React/RCTWebSocket (0.50.4):
     - React/Core
-  - Yoga (0.42.3.React)
+    - React/fishhook
+    - React/RCTBlob
+  - yoga (0.50.4.React)
 
 DEPENDENCIES:
   - native-navigation (from `../../`)
@@ -30,21 +31,21 @@ DEPENDENCIES:
   - React/RCTNetwork (from `../../node_modules/react-native`)
   - React/RCTText (from `../../node_modules/react-native`)
   - React/RCTWebSocket (from `../../node_modules/react-native`)
-  - Yoga (from `../../node_modules/react-native/ReactCommon/yoga/Yoga.podspec`)
+  - yoga (from `../../node_modules/react-native/ReactCommon/yoga/Yoga.podspec`)
 
 EXTERNAL SOURCES:
   native-navigation:
-    :path: "../../"
+    :path: ../../
   React:
-    :path: "../../node_modules/react-native"
-  Yoga:
-    :path: "../../node_modules/react-native/ReactCommon/yoga/Yoga.podspec"
+    :path: ../../node_modules/react-native
+  yoga:
+    :path: ../../node_modules/react-native/ReactCommon/yoga/Yoga.podspec
 
 SPEC CHECKSUMS:
-  native-navigation: 23b0ef13de8bd9aaa4dbaa115e9b7055e6844987
-  React: 35e039680feacd0563677d49ba410112d2748559
-  Yoga: 86ce777665c8259b94ef8dbea76b84634237f4ea
+  native-navigation: da89853765e1ffc180172a19fd2b5e57c11ca4a0
+  React: 541ba768b9855e10cdc76f55427a5cd0653ca806
+  yoga: 17521bbb0dd54a47c0b3ac43253e78cdac7488e0
 
-PODFILE CHECKSUM: 62780c26b71f717952c8247c70052484dc91c6b3
+PODFILE CHECKSUM: 223e804bc2b361b6060ea95395707fe50be5870f
 
-COCOAPODS: 1.2.0
+COCOAPODS: 1.4.0

@@ -90,7 +90,7 @@ open class ReactViewController: UIViewController {
   fileprivate var statusBarStyle: UIStatusBarStyle = UIStatusBarStyle.default
   fileprivate var statusBarIsDirty: Bool = false
   fileprivate var leadingButtonVisible: Bool = true
-  private var barHeight: CGFloat
+  fileprivate var barHeight: CGFloat
 
   // MARK: Lifecycle
 
@@ -243,19 +243,19 @@ open class ReactViewController: UIViewController {
     handleLeadingButtonVisibleChange()
   }
 
-  public func setCloseBehavior(_ closeBehavior: String) {
+  open func setCloseBehavior(_ closeBehavior: String) {
     // TODO(lmr): does this belong in navigation implementation?
     // TODO(spike)
   }
 
-  func setNavigationBarProperties(props: [String: AnyObject]) {
+  func setNavigationBarProperties(_ props: [String: AnyObject]) {
     if (isCurrentlyTransitioning) {
       onTransitionCompleted = {
-        self.updateNavigationImpl(props: props)
+        self.updateNavigationImpl(props)
         self.onTransitionCompleted = nil // prevent retain cycle
       }
     } else {
-      updateNavigationImpl(props: props)
+      updateNavigationImpl(props)
     }
   }
 
@@ -292,7 +292,7 @@ open class ReactViewController: UIViewController {
    * This is meant to be called by the ReactNavigationCoordinator. The intention is to
    * tell the coordinator that presented us to dismiss us.
    */
-  public func dismiss(_ payload: [String: AnyObject]) {
+  open func dismiss(_ payload: [String: AnyObject]) {
     delegate?.didDismiss(self, withPayload: payload)
   }
 
@@ -316,7 +316,7 @@ open class ReactViewController: UIViewController {
     )
   }
 
-  public func emitEvent(_ eventName: String, body: AnyObject?) {
+  open func emitEvent(_ eventName: String, body: AnyObject?) {
     let name = String(format: "NativeNavigationScreen.%@.%@", eventName, self.nativeNavigationInstanceId)
     let args: [AnyObject]
     if let payload = body {
@@ -348,7 +348,7 @@ open class ReactViewController: UIViewController {
     }
   }
 
-  private func updateNavigationImpl(props: [String: AnyObject]) {
+  fileprivate func updateNavigationImpl(_ props: [String: AnyObject]) {
     prevConfig = renderedConfig
     renderedConfig = initialConfig.combineWith(values: props)
     reconcileScreenConfig()

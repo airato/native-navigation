@@ -13,28 +13,28 @@ import React
 
 @objc public protocol ReactNavigationImplementation: class {
 
-  func makeNavigationController(rootViewController: UIViewController) -> UINavigationController
+  func makeNavigationController(_ rootViewController: UIViewController) -> UINavigationController
 
   func reconcileScreenConfig(
-    viewController: ReactViewController,
+    _ viewController: ReactViewController,
     navigationController: UINavigationController?,
     prev: [String: AnyObject],
     next: [String: AnyObject]
   )
 
   func reconcileTabConfig(
-    tabBarItem: UITabBarItem,
+    _ tabBarItem: UITabBarItem,
     prev: [String: AnyObject],
     next: [String: AnyObject]
   )
 
   func reconcileTabBarConfig(
-    tabBar: UITabBar,
+    _ tabBar: UITabBar,
     prev: [String: AnyObject],
     next: [String: AnyObject]
   )
 
-  func getBarHeight(viewController: ReactViewController, navigationController: UINavigationController?, config: [String: AnyObject]) -> CGFloat;
+  func getBarHeight(_ viewController: ReactViewController, navigationController: UINavigationController?, config: [String: AnyObject]) -> CGFloat;
 }
 
 // this is a convenience class to allow us to easily assign lambdas as press handlers
@@ -84,7 +84,7 @@ class BlockBarButtonItem: UIBarButtonItem {
     }
   }
 
-  func barButtonItemPressed(sender: UIBarButtonItem) {
+  func barButtonItemPressed(_ sender: UIBarButtonItem) {
     actionHandler?()
   }
 }
@@ -355,8 +355,8 @@ func configureBarButtonArrayForKey(_ key: String, _ props: [String: AnyObject]) 
 
 open class DefaultReactNavigationImplementation: ReactNavigationImplementation {
 
-  public func getBarHeight(
-    viewController: ReactViewController,
+  open func getBarHeight(
+    _ viewController: ReactViewController,
     navigationController: UINavigationController?,
     config: [String: AnyObject]
   ) -> CGFloat {
@@ -379,14 +379,14 @@ open class DefaultReactNavigationImplementation: ReactNavigationImplementation {
     return (statusBarHidden ? 0 : 20) + (navBarHidden ? 0 : 44) + (hasPrompt ? 30 : 0)
   }
 
-  public func makeNavigationController(rootViewController: UIViewController) -> UINavigationController {
+  open func makeNavigationController(_ rootViewController: UIViewController) -> UINavigationController {
     // TODO(lmr): pass initialConfig
     // TODO(lmr): do we want to provide a way to customize the NavigationBar class?
     return UINavigationController(rootViewController: rootViewController)
   }
 
-  public func reconcileTabConfig(
-    tabBarItem: UITabBarItem,
+  open func reconcileTabConfig(
+    _ tabBarItem: UITabBarItem,
     prev: [String: AnyObject],
     next: [String: AnyObject]
   ){
@@ -417,8 +417,8 @@ open class DefaultReactNavigationImplementation: ReactNavigationImplementation {
     // TODO: badgeTextAttributes (for various states)
   }
 
-  public func reconcileTabBarConfig(
-    tabBar: UITabBar,
+  open func reconcileTabBarConfig(
+    _ tabBar: UITabBar,
     prev: [String: AnyObject],
     next: [String: AnyObject]
   ) {
@@ -469,8 +469,8 @@ open class DefaultReactNavigationImplementation: ReactNavigationImplementation {
 
   }
 
-  public func reconcileScreenConfig(
-    viewController: ReactViewController,
+  open func reconcileScreenConfig(
+    _ viewController: ReactViewController,
     navigationController: UINavigationController?,
     prev: [String: AnyObject],
     next: [String: AnyObject]
@@ -625,7 +625,7 @@ func getFont(_ name: String, _ size: CGFloat) -> UIFont {
 
 }
 
-func buildFontFromProps(nameKey: String, sizeKey: String, defaultSize: CGFloat, props: [String: AnyObject]) -> UIFont {
+func buildFontFromProps(_ nameKey: String, sizeKey: String, defaultSize: CGFloat, props: [String: AnyObject]) -> UIFont {
   let name = stringForKey(nameKey, props)
   let size = floatForKey(sizeKey, props)
   if let name = name, let size = size {
@@ -660,7 +660,7 @@ func titleAndSubtitleViewFromProps(_ props: [String: AnyObject]) -> UIView? {
     titleLabel.textColor = UIColor.gray
   }
 
-  titleLabel.font = buildFontFromProps(nameKey: "titleFontName", sizeKey: "titleFontSize", defaultSize: 17, props: props)
+  titleLabel.font = buildFontFromProps("titleFontName", sizeKey: "titleFontSize", defaultSize: 17, props: props)
   titleLabel.text = title
   titleLabel.sizeToFit()
 
@@ -676,7 +676,7 @@ func titleAndSubtitleViewFromProps(_ props: [String: AnyObject]) -> UIView? {
     subtitleLabel.textColor = UIColor.black
   }
 
-  subtitleLabel.font = buildFontFromProps(nameKey: "subtitleFontName", sizeKey: "subtitleFontSize", defaultSize: 12, props: props)
+  subtitleLabel.font = buildFontFromProps("subtitleFontName", sizeKey: "subtitleFontSize", defaultSize: 12, props: props)
   subtitleLabel.text = subtitle
   subtitleLabel.sizeToFit()
 

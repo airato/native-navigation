@@ -60,13 +60,13 @@ final class TabView: UIView {
 
   // MARK: Private
 
-  private var implementation: ReactNavigationImplementation = ReactNavigationCoordinator.sharedInstance.navigation
-  private var viewController: UIViewController?
-  private var tabBarItem: UITabBarItem = UITabBarItem()
-  private var route: String?
-  private var props: [String: AnyObject] = [:]
-  private var prevConfig: [String: AnyObject] = [:]
-  private var renderedConfig: [String: AnyObject] = [:]
+  fileprivate var implementation: ReactNavigationImplementation = ReactNavigationCoordinator.sharedInstance.navigation
+  fileprivate var viewController: UIViewController?
+  fileprivate var tabBarItem: UITabBarItem = UITabBarItem()
+  fileprivate var route: String?
+  fileprivate var props: [String: AnyObject] = [:]
+  fileprivate var prevConfig: [String: AnyObject] = [:]
+  fileprivate var renderedConfig: [String: AnyObject] = [:]
 
 }
 
@@ -74,7 +74,7 @@ final class TabView: UIView {
 
 private let VERSION: Int = 1
 
-@objc(TabViewManager)
+(TabViewManager)
 final class TabViewManager: RCTViewManager {
   override func view() -> UIView! {
     return TabView()

@@ -38,7 +38,7 @@ open class ReactTabBarController: UITabBarController {
   fileprivate var statusBarIsDirty: Bool = false
   fileprivate var leadingButtonVisible: Bool = true
   fileprivate var tabViews: [TabView] = []
-  private var barHeight: CGFloat
+  fileprivate var barHeight: CGFloat
 
   public convenience init(moduleName: String) {
     self.init(moduleName: moduleName, props: [:])
@@ -109,7 +109,7 @@ open class ReactTabBarController: UITabBarController {
 
   }
 
-  public func emitEvent(_ eventName: String, body: AnyObject?) {
+  open func emitEvent(_ eventName: String, body: AnyObject?) {
     let name = String(format: "NativeNavigationScreen.%@.%@", eventName, self.nativeNavigationInstanceId)
     let args: [AnyObject]
     if let payload = body {
@@ -133,15 +133,15 @@ open class ReactTabBarController: UITabBarController {
     }
   }
 
-  func setNavigationBarProperties(props: [String : AnyObject]) {
+  func setNavigationBarProperties(_ props: [String : AnyObject]) {
     // TODO(lmr): not sure what we are supposed to do here for tabbar case...
   }
 
-  public func dismiss(_ payload: [String : AnyObject]) {
+  open func dismiss(_ payload: [String : AnyObject]) {
     
   }
 
-  private func refreshTabViews() {
+  fileprivate func refreshTabViews() {
 
     var stack: [UIView] = [reactView!]
 

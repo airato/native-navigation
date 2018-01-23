@@ -9,13 +9,13 @@
 import Foundation
 
 
-public class ClosureWrapper : NSObject {
+open class ClosureWrapper : NSObject {
   let _callback : (Void) -> Void
   init(callback : @escaping (Void) -> Void) {
     _callback = callback
   }
 
-  public func invoke() {
+  open func invoke() {
     _callback()
   }
 }

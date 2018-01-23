@@ -23,7 +23,7 @@ protocol InternalReactViewControllerProtocol: class {
   func startedWaitingForRealNavigation()
   func emitEvent(_ eventName: String, body: AnyObject?)
   func dismiss(_ payload: [String: AnyObject])
-  func setNavigationBarProperties(props: [String: AnyObject])
+  func setNavigationBarProperties(_ props: [String: AnyObject])
   func signalFirstRenderComplete()
   func setCloseBehavior(_ closeBehavior: String)
 }

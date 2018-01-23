@@ -129,7 +129,7 @@ class ReactNavigation: NSObject {
     }
   }
   
-  private func modalPresentationStyle(from options: [String: Any]) -> UIModalPresentationStyle {
+  fileprivate func modalPresentationStyle(from options: [String: Any]) -> UIModalPresentationStyle {
     guard let modalPresentationStyle = options["modalPresentationStyle"] as? String else {
       return .fullScreen // this is the system default
     }

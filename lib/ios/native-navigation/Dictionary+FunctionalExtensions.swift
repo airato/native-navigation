@@ -16,17 +16,17 @@ extension Dictionary {
     }
   }
 
-  public mutating func merge(values: [Key: Value]) -> [Key: Value] {
+  public mutating func merge(_ values: [Key: Value]) -> [Key: Value] {
     for (key, value) in values {
       self[key] = value
     }
     return self
   }
 
-  public func combineWith(values: [Key: Value]) -> [Key: Value] {
+  public func combineWith(_ values: [Key: Value]) -> [Key: Value] {
     var out = [Key: Value]()
-    let _ = out.merge(values: self);
-    let _ = out.merge(values: values);
+    let _ = out.merge(self);
+    let _ = out.merge(values);
     return out;
   }
 
