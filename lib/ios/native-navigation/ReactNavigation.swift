@@ -38,7 +38,7 @@ class ReactNavigation: NSObject {
   func setScreenProperties(_ props: [String: AnyObject], withInstanceId instanceId: String) {
     if let vc = coordinator.viewControllerForId(instanceId) {
       DispatchQueue.main.async {
-        vc.setNavigationBarProperties(props: props)
+        vc.setNavigationBarProperties(props)
       }
     }
   }

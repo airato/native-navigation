@@ -31,7 +31,7 @@ final class TabView: UIView {
     self.prevConfig = self.renderedConfig
     self.renderedConfig = config
     implementation.reconcileTabConfig(
-      tabBarItem: tabBarItem,
+      tabBarItem,
       prev: prevConfig,
       next: renderedConfig
     );

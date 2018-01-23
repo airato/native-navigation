@@ -21,7 +21,7 @@ final class TabBar: RCTView {
   func refresh() {
     if let tabBar = tabBar {
       implementation.reconcileTabBarConfig(
-        tabBar: tabBar,
+        tabBar,
         prev: prevConfig,
         next: renderedConfig
       );

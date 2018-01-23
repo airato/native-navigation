@@ -117,7 +117,7 @@ open class ReactViewController: UIViewController {
     }
 
     self.barHeight = coordinator.navigation.getBarHeight(
-      viewController: self,
+      self,
       navigationController: navigationController,
       config: renderedConfig
     )
@@ -297,7 +297,7 @@ open class ReactViewController: UIViewController {
   }
 
   func prepareViewControllerForPresenting() -> UIViewController {
-    let navigationController = coordinator.navigation.makeNavigationController(rootViewController: self)
+    let navigationController = coordinator.navigation.makeNavigationController(self)
     if let screenColor = colorForKey("screenColor", initialConfig) {
       if (screenColor.cgColor.alpha < 1.0) {
         navigationController.modalPresentationStyle = .overCurrentContext
@@ -309,7 +309,7 @@ open class ReactViewController: UIViewController {
   fileprivate func reconcileScreenConfig() {
     let nav = navigationController ?? eagerNavigationController
     coordinator.navigation.reconcileScreenConfig(
-      viewController: self,
+      self,
       navigationController: nav,
       prev: prevConfig,
       next: renderedConfig
@@ -350,14 +350,14 @@ open class ReactViewController: UIViewController {
 
   fileprivate func updateNavigationImpl(_ props: [String: AnyObject]) {
     prevConfig = renderedConfig
-    renderedConfig = initialConfig.combineWith(values: props)
+    renderedConfig = initialConfig.combineWith(props)
     reconcileScreenConfig()
     updateBarHeightIfNeeded()
   }
 
   func updateBarHeightIfNeeded() {
     let newHeight = coordinator.navigation.getBarHeight(
-      viewController: self,
+      self,
       navigationController: navigationController ?? eagerNavigationController,
       config: renderedConfig
     )
