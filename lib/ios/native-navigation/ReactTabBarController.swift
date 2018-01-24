@@ -172,7 +172,7 @@ open class ReactTabBarController: UITabBarController {
   }
 }
 
-private let DELAY: Int64 = Int64(1.2 * Double(NSEC_PER_SEC))
+private let PUSH_DELAY: Int64 = Int64(1.2 * Double(NSEC_PER_SEC))
 private var IN_PROGRESS: Bool = false
 
 extension ReactTabBarController: UITabBarControllerDelegate {
@@ -232,7 +232,7 @@ extension ReactTabBarController: UITabBarControllerDelegate {
     irvc.startedWaitingForRealNavigation()
 
     // we delay pushing the view controller just a little bit (50ms) so that the react view can render
-    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(DELAY) / Double(NSEC_PER_SEC)) {
+    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(PUSH_DELAY) / Double(NSEC_PER_SEC)) {
       if (irvc.isPendingNavigationTransition) {
         print("Push Fallback Timer Called!")
         realSelect()

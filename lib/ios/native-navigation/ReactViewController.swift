@@ -94,11 +94,11 @@ open class ReactViewController: UIViewController {
 
   // MARK: Lifecycle
 
-  public convenience init(moduleName: String) {
+  @objc public convenience init(moduleName: String) {
     self.init(moduleName: moduleName, props: [:])
   }
 
-  public init(moduleName: String, props: [String: AnyObject]) {
+  @objc public init(moduleName: String, props: [String: AnyObject]) {
     self.nativeNavigationInstanceId = generateId(moduleName)
     self.moduleName = moduleName
 

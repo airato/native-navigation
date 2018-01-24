@@ -63,7 +63,7 @@ class BlockBarButtonItem: UIBarButtonItem {
     style: UIBarButtonItemStyle,
     enabled: Bool?,
     tintColor: UIColor?,
-    titleTextAttributes: [String: Any]?
+    titleTextAttributes: [NSAttributedStringKey: Any]?
   ) {
     if let barButtonSystemItem = barButtonSystemItem {
       self.init(barButtonSystemItem: barButtonSystemItem)
@@ -80,7 +80,7 @@ class BlockBarButtonItem: UIBarButtonItem {
     }
     if let titleTextAttributes = titleTextAttributes {
       // TODO(lmr): what about other control states? do we care?
-      setTitleTextAttributes(titleTextAttributes, for: .normal)
+        setTitleTextAttributes(titleTextAttributes, for: .normal)
     }
   }
 
@@ -248,8 +248,8 @@ func statusBarAnimationFromString(_ string: String?) -> UIStatusBarAnimation {
 func textAttributesFromPrefix(
   _ prefix: String,
   _ props: [String: AnyObject]
-) -> [String: Any]? {
-  var attributes: [String: Any] = [:]
+) -> [NSAttributedStringKey: Any]? {
+  var attributes: [NSAttributedStringKey: Any] = [:]
   if let color = colorForKey("\(prefix)Color", props) {
     attributes[NSAttributedStringKey.foregroundColor] = color
   } else if let color = colorForKey("foregroundColor", props) {

@@ -47,10 +47,10 @@ open class ReactNavigationCoordinator: NSObject {
 
   // MARK: Public
 
-  open static let sharedInstance = ReactNavigationCoordinator()
+  @objc open static let sharedInstance = ReactNavigationCoordinator()
 
-  open var delegate: ReactNavigationCoordinatorDelegate?
-  open var bridge: RCTBridge?
+  @objc open var delegate: ReactNavigationCoordinatorDelegate?
+  @objc open var bridge: RCTBridge?
   open var navigation: ReactNavigationImplementation = DefaultReactNavigationImplementation()
 
   open func topViewController() -> UIViewController? {
