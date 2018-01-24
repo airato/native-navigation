@@ -40,7 +40,7 @@ final class SharedElementGroup: RCTView {
 
 private let VERSION: Int = 1
 
-(SharedElementGroupManager)
+@objc(SharedElementGroupManager)
 final class SharedElementGroupManager: RCTViewManager {
   override func view() -> UIView! {
     return SharedElementGroup()

@@ -47,7 +47,7 @@ final class SharedElement: RCTView {
 
 private let VERSION: Int = 1
 
-(SharedElementManager)
+@objc(SharedElementManager)
 final class SharedElementManager: RCTViewManager {
   override func view() -> UIView! {
     return SharedElement()

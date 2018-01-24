@@ -39,7 +39,7 @@ final class TabBar: RCTView {
 
 private let VERSION: Int = 1
 
-(TabBarViewManager)
+@objc(TabBarViewManager)
 final class TabBarViewManager: RCTViewManager {
   override func view() -> UIView! {
     return TabBar()

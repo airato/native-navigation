@@ -28,7 +28,7 @@ public extension ViewSnapshot {
 public struct UIViewSnapshot: ViewSnapshot {
 
   public init(
-    view: UIView,
+view: UIView,
     backgroundColor: UIColor?,
     alpha: CGFloat,
     hidden: Bool)
