@@ -430,9 +430,13 @@ extension ReactViewController : ReactAnimationFromContentVendor {
   public func reactAnimationFromContent(_ animationContainer: UIView, transitionGroup: String, options: [String: Any]) -> ReactAnimationFromContent {
     let snapshot = self.snapshotForAnimationContainer(animationContainer, transitionGroup: transitionGroup)
     animationContainer.sendSubview(toBack: snapshot.screenWithoutElements.view)
+    var se = [String: UIView]()
+    for (kind, v) in snapshot.sharedElements {
+        se[kind] = v.view
+    }
     return ReactAnimationFromContent(
       screenWithoutElements: snapshot.screenWithoutElements.view,
-      sharedElements: snapshot.sharedElements.mapValues { $0.view }
+      sharedElements: se
     )
   }
 
@@ -447,9 +451,13 @@ extension ReactViewController : ReactAnimationToContentVendor {
   public func reactAnimationToContent(_ animationContainer: UIView) -> ReactAnimationToContent {
     let snapshot = self.snapshotForAnimationContainer(animationContainer)
     animationContainer.sendSubview(toBack: snapshot.screenWithoutElements.view)
+    var se = [String: UIView]()
+    for (kind, v) in snapshot.sharedElements {
+        se[kind] = v.view
+    }
     return ReactAnimationToContent(
       screenWithoutElements: snapshot.screenWithoutElements.view,
-      sharedElements: snapshot.sharedElements.mapValues { $0.view }
+      sharedElements: se
     )
   }
 }
