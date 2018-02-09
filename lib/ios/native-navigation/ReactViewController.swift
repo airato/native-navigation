@@ -87,7 +87,7 @@ open class ReactViewController: UIViewController {
   fileprivate var reactView: UIView!
   fileprivate var statusBarAnimation: UIStatusBarAnimation = .fade
   fileprivate var statusBarHidden: Bool = false
-  fileprivate var statusBarStyle: UIStatusBarStyle = UIStatusBarStyle.default
+  fileprivate var statusBarStyle: UIStatusBarStyle = UIStatusBarStyle.lightContent
   fileprivate var statusBarIsDirty: Bool = false
   fileprivate var leadingButtonVisible: Bool = true
   fileprivate var barHeight: CGFloat
